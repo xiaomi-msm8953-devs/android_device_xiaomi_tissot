@@ -14,7 +14,7 @@ function blob_fixup() {
 	    sed -i 's|/system/etc/camera/|/vendor/etc/camera/|g' "${2}"
 	    ;;
 	vendor/lib64/libvendor.goodix.hardware.fingerprint@1.0.so)
-	    grep -q "libhidlbase-v32.so" "${2}" || "${PATCHELF}" --replace-needed "libhidlbase.so" "libhidlbase-v32.so" "${2}"
+	    sed -i "s|libhidlbase.so|v32hidlbase.so|g" "${2}"
 	    ;;
     esac
 
